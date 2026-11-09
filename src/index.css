@@ -1,0 +1,334 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@source "./";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * FluxPay Design Foundations
+ * ----------------------------
+ * Brand: modern Nigerian fintech. Confident, calm, premium.
+ * Palette anchored on Deep Emerald (trust + Nigerian identity) with a warm
+ * Gold accent. Surfaces are near-white with a subtle warm tint; dark surface
+ * is an ink navy for hero cards and immersive states.
+ *
+ * Type:  Sora (display) + Manrope (body) + JetBrains Mono (numeric).
+ * Radius: soft 20px baseline (rounded-2xl) — everything else derives from it.
+ * Spacing: 8pt system. Safe-area aware. One-hand thumb reach optimized.
+ */
+
+@theme inline {
+  /* Radius scale (2xl = 20px baseline) */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-full: 999px;
+
+  /* Fonts */
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Semantic color tokens (mapped to raw vars below) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+
+  /* Chart tokens */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+:root {
+  --radius: 20px;
+
+  /* Neutrals — warm ivory surface */
+  --background: oklch(0.985 0.004 90);
+  --foreground: oklch(0.18 0.02 170);
+  --surface: oklch(1 0 0);
+  --surface-elevated: oklch(0.995 0.003 90);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 170);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 170);
+
+  /* Brand — Deep Emerald */
+  --primary: oklch(0.42 0.09 165);
+  --primary-foreground: oklch(0.985 0.01 150);
+  --primary-soft: oklch(0.95 0.03 165);
+
+  /* Ink — hero/dark surfaces */
+  --ink: oklch(0.22 0.04 170);
+  --ink-foreground: oklch(0.985 0.01 150);
+
+  /* Gold accent */
+  --gold: oklch(0.82 0.13 85);
+  --gold-foreground: oklch(0.22 0.04 60);
+
+  --secondary: oklch(0.96 0.008 150);
+  --secondary-foreground: oklch(0.25 0.03 170);
+  --muted: oklch(0.965 0.005 150);
+  --muted-foreground: oklch(0.5 0.02 170);
+  --accent: oklch(0.95 0.03 165);
+  --accent-foreground: oklch(0.32 0.07 165);
+
+  /* Status */
+  --success: oklch(0.62 0.14 155);
+  --success-foreground: oklch(0.99 0.01 150);
+  --warning: oklch(0.78 0.15 75);
+  --warning-foreground: oklch(0.22 0.04 60);
+  --destructive: oklch(0.58 0.2 25);
+  --destructive-foreground: oklch(0.99 0.01 25);
+  --info: oklch(0.65 0.13 240);
+  --info-foreground: oklch(0.99 0.01 240);
+
+  /* Borders / lines */
+  --border: oklch(0.92 0.008 150);
+  --border-strong: oklch(0.86 0.01 150);
+  --input: oklch(0.92 0.008 150);
+  --ring: oklch(0.42 0.09 165);
+
+  /* Charts */
+  --chart-1: oklch(0.42 0.09 165);
+  --chart-2: oklch(0.82 0.13 85);
+  --chart-3: oklch(0.65 0.13 240);
+  --chart-4: oklch(0.72 0.14 30);
+  --chart-5: oklch(0.55 0.14 300);
+
+  /* Gradients & shadows */
+  --gradient-hero: linear-gradient(
+    135deg,
+    oklch(0.32 0.07 170) 0%,
+    oklch(0.42 0.09 165) 55%,
+    oklch(0.52 0.11 160) 100%
+  );
+  --gradient-gold: linear-gradient(
+    135deg,
+    oklch(0.86 0.13 85) 0%,
+    oklch(0.78 0.15 70) 100%
+  );
+  --gradient-mesh:
+    radial-gradient(
+      120% 80% at 0% 0%,
+      oklch(0.52 0.11 160 / 0.35) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      90% 70% at 100% 0%,
+      oklch(0.82 0.13 85 / 0.25) 0%,
+      transparent 60%
+    ),
+    linear-gradient(180deg, oklch(0.28 0.06 170) 0%, oklch(0.2 0.04 170) 100%);
+
+  --shadow-xs: 0 1px 2px oklch(0.2 0.04 170 / 0.06);
+  --shadow-sm: 0 2px 6px -1px oklch(0.2 0.04 170 / 0.08);
+  --shadow-md: 0 8px 20px -8px oklch(0.2 0.04 170 / 0.14);
+  --shadow-lg: 0 20px 40px -18px oklch(0.2 0.04 170 / 0.22);
+  --shadow-glow: 0 20px 60px -20px oklch(0.42 0.09 165 / 0.45);
+  --shadow-gold: 0 16px 44px -18px oklch(0.78 0.15 75 / 0.55);
+}
+
+.dark {
+  --background: oklch(0.16 0.02 170);
+  --foreground: oklch(0.97 0.01 150);
+  --surface: oklch(0.2 0.03 170);
+  --surface-elevated: oklch(0.24 0.035 170);
+
+  --card: oklch(0.22 0.03 170);
+  --card-foreground: oklch(0.97 0.01 150);
+  --popover: oklch(0.22 0.03 170);
+  --popover-foreground: oklch(0.97 0.01 150);
+
+  --primary: oklch(0.7 0.14 160);
+  --primary-foreground: oklch(0.16 0.02 170);
+  --primary-soft: oklch(0.3 0.06 165);
+
+  --ink: oklch(0.12 0.02 170);
+  --ink-foreground: oklch(0.97 0.01 150);
+
+  --gold: oklch(0.82 0.13 85);
+  --gold-foreground: oklch(0.18 0.03 60);
+
+  --secondary: oklch(0.26 0.03 170);
+  --secondary-foreground: oklch(0.97 0.01 150);
+  --muted: oklch(0.24 0.03 170);
+  --muted-foreground: oklch(0.7 0.02 170);
+  --accent: oklch(0.3 0.06 165);
+  --accent-foreground: oklch(0.92 0.03 165);
+
+  --success: oklch(0.72 0.16 155);
+  --success-foreground: oklch(0.14 0.02 170);
+  --warning: oklch(0.82 0.15 75);
+  --warning-foreground: oklch(0.18 0.03 60);
+  --destructive: oklch(0.68 0.2 25);
+  --destructive-foreground: oklch(0.14 0.02 25);
+  --info: oklch(0.72 0.13 240);
+  --info-foreground: oklch(0.14 0.02 240);
+
+  --border: oklch(1 0 0 / 8%);
+  --border-strong: oklch(1 0 0 / 16%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.7 0.14 160);
+
+  --chart-1: oklch(0.7 0.14 160);
+  --chart-2: oklch(0.82 0.13 85);
+  --chart-3: oklch(0.72 0.13 240);
+  --chart-4: oklch(0.75 0.15 30);
+  --chart-5: oklch(0.65 0.15 300);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  .font-numeric,
+  [data-numeric] {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* --- Utilities ---------------------------------------------------------- */
+
+@utility bg-hero {
+  background: var(--gradient-hero);
+}
+@utility bg-gold-grad {
+  background: var(--gradient-gold);
+}
+@utility bg-mesh {
+  background: var(--gradient-mesh);
+}
+@utility shadow-elegant {
+  box-shadow: var(--shadow-md);
+}
+@utility shadow-elevated {
+  box-shadow: var(--shadow-lg);
+}
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+@utility shadow-gold {
+  box-shadow: var(--shadow-gold);
+}
+@utility safe-top {
+  padding-top: max(env(safe-area-inset-top), 12px);
+}
+@utility safe-bottom {
+  padding-bottom: max(env(safe-area-inset-bottom), 12px);
+}
+@utility tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+@utility text-display-xl {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+@utility text-display-lg {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+@utility text-display-md {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+@utility text-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+@utility text-body {
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+@utility text-caption {
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+@utility text-overline {
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
